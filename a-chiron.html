@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ARMFUL by vssousa</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>A-Chiron SWMS</h1>
+        <p></p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/vssousa/armful" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/vssousa/armful/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/vssousa/armful/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
+        <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
+        <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
+      </nav>
+      <section>
+      <h3>
+<p><a href="index.html">Home</a> >> <a href="a-chiron.html">A-Chiron</a></p>
+<a id="a-chiron" class="anchor" href="#a-chiron" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+A-Chiron SWMS
+</h3>
+      <p>
+      A-Chiron is an implementation of ARMFUL with <a href="http://chironengine.sourceforge.net" target="_blank">Chiron SWMS</a>. Since the main contributions of ARMFUL are supporting raw data extraction and index generation based on the invocation of external programs (<i>ad-hoc</i> programs or third-party tools), we developed different cartridges to support these features in A-Chiron. In this context, a cartridge represents the implementation of a specific algorithm for raw data extraction or indexing.
+      </p>
+<h3>
+<a id="rde" class="anchor" href="#rde" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+Raw Data Extraction support
+</h3>
+  <p>
+  Considering the <i>Raw Data Extraction</i> component, we develop two cartridges, named as <i>Program Invoker</i> and <i>ParaView</i>. <i>Program Invoker</i> cartridge invokes <i>ad-hoc</i> programs for extracting specific attribute values from files. Different from this cartridge, <i>ParaView</i> cartridge uses a generic program, which was developed by our research team, using the ParaView’s Python API to extract raw data from XDMF and HDF5 files. As an input file to this program, users have to provide the raw data file path and the attributes to be extracted from the files. 
+  <br>The source code of <i>ParaView</i> script can be found <a href="https://github.com/vssousa/armful/tree/gh-pages/src/paraview-script" target="_blank">here</a>.
+  </p>
+
+<h3>
+<a id="rdi" class="anchor" href="#rdi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+Index Generation support
+</h3>
+  <p>Considering the <i>Indexing Generation</i> component, we develop two cartridges, named as <i>Positional Indexing</i> and <i>FastBit tool</i>. <i>Positional Indexing</i> cartridge consists of a program developed by our team to generate positional indexes considering the algorithm presented on the <a href="http://www.vldb.org/pvldb/vol7/p1119-karpathiotakis.pdf" target="_blank">RAW’s implementation</a>. <i>FastBit tool</i> cartridge implements the invocation of the <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a> library to generate bitmap indexes (represented by the program ardea). 
+  <br>The source codes for generating indexes using those cartridges can be found <a href="https://github.com/vssousa/armful/tree/gh-pages/src/indexing-cartridges" target="_blank">here</a>.
+  </p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

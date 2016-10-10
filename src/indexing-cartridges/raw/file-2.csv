@@ -1,0 +1,4 @@
+CUSTOMERID,AGE,GENDER,CHILDREN,STATUS
+ 1,10,'male',1,'single'
+ 2,20,'female',4,'married'
+ 3,30,'male',0,'single'
