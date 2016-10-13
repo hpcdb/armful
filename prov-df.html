@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ARMFUL</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>PROV-Df data model</h1>
+        <p></p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+        <a href="https://github.com/hpcdb/armful" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/hpcdb/armful/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/hpcdb/armful/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
+        <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
+        <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
+        <ul><a href="prov-df.html"><strong>PROV-Df</strong></a></ul>
+      </nav>
+      <section>
+      <h3>
+<p><a href="index.html">Home</a> >> <a href="prov-df.html">PROV-Df</a></p>
+
+<a id="prov-df" class="anchor" href="#provdf" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+PROV-Df data model
+</h3>
+      <p>
+      Considering the importance of provenance and raw data management in computer simulation runs to enhance traceability, reproducibility, and reliability, our research team developed a provenance data model named as <a href="https://www.w3.org/TR/prov-overview" target="_blank">PROV-Df</a>. This data model is a specialization of the PROV W3C recommendation, to accommodate provenance and raw data in executions. We present PROV-Df in Figure 1. 
+        <img src="img/prov-df.png" alt="PROV-Df data model">
+      </p>
+      <p align="center">
+      <b>Figure 1. PROV-Df data model</b>
+      </p>
+      <p>
+      PROV-Df is composed of three parts: the structure of the dataflow (white classes in the UML class diagram), execution of the dataflow (dark gray classes), and environment configuration (light gray classes). Each class in PROV-Df is extended from a PROV component. The stereotypes in the UML class diagram are used to represent PROV components. More details about PROV-Df can be found in our <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">CCPE paper</a> published in 2016.
+      </p>
+<h3>
+<a id="simulations" class="anchor" href="#simulations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+Provenance files in computer simulations
+</h3>
+<h4>
+CFD computer simulation using A-Chiron SWMS
+</h4>
+  <p>
+    In our Computational Fluid Dynamics (CFD) simulation runs, we used A-Chiron SWMS to enable the parallel execution of this computer simulation in a cluster environment. In this case, we extended provenance database using PostgreSQL DBMS to follows the PROV-Df data model. This extended version of our provenance database also contemplates the raw data analysis and the dataflow management at the physical and logical levels (i.e., file flow and data element flow). We can found <a href="src/prov-df/a-chiron-cfd" target="_blank">Entity-Relationship diagrams of the A-Chiron’s provenance database</a> using different versions of the CFD workflow (varying the strategy for raw data extraction or indexing).
+  </p>
+  <p>
+    Moreover, we export those data from the A-Chiron’s provenance database to PROV files using different file formats, such as DOT, JSON, PROV-N, and XML. We use <a href="http://lucmoreau.github.io/ProvToolbox/" target="_blank">ProvToolbox</a> to generate these PROV files. Then, we validate our provenance data model using PROV-N file as input in <a href="https://provenance.ecs.soton.ac.uk/validator/" target="_blank">ProvValidator</a>. More details about the validation of PROV-Df data model can be found <a href="src/prov-df/a-chiron-cfd/prov-files" target="_blank">here</a>.
+  </p>
+
+<h4>
+Astronomy computer simulation using Montage toolkit and A-Chiron SWMS
+</h4>
+  <p>
+    <a href="http://montage.ipac.caltech.edu/" target="_blank">Montage</a> is a toolkit used for assembling astronomical images into custom mosaics, suitable for large-scale processing of the sky. Montage provides astronomers a service to build mosaics in <a href="http://fits.gsfc.nasa.gov/" target="_blank">Flexible Image Transport System (FITS)</a> format, according to common astronomy coordinate systems, arbitrary image sizes, and rotations, and all World Coordinate System map projections. 
+  </p>
+  <p>
+    We use this toolkit to model and execute an astronomy computer simulation using A-Chiron SWMS in a cluster environment. In this website, we provide a tutorial to execute a computer simulation using Montage and A-Chiron SWMS (<a href="src/simulation/montage" target="_blank">Montage tutorial</a>), and some additional details about the <a href="src/prov-df/montage" target="_blank">A-Chiron’s provenance database in this astronomy simulation</a>.
+  </p>
+
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
