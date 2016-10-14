@@ -51,12 +51,12 @@
 DfAnalyzer framework
 </h3>
       <p>
-      DfAnalyzer framework is an instantiation of ARMFUL architecture that can be coupled to existing Scientific Workflow Management Systems (SWMS) and scientific applications. DfAnalyzer keeps all the parallel execution control at the code of the SWMS or the scientific application. Considering the ARMFUL’s components, each one of them can be mapped to a specific software from DfAnalyzer framework, as follows:
+      DfAnalyzer framework is an instantiation of ARMFUL architecture that can be coupled to existing Scientific Workflow Management Systems (SWMS) and scientific applications. DfAnalyzer keeps all the parallel execution control at the code of the SWMS or the scientific application. It is only recommended to couple Provenance Gatherer to existing SWMS without provenance data management. If the SWMS manages provenance data, it is recommended to extend the provenance support of the SWMS with the purpose of managing raw data from files. Considering the ARMFUL’s components, each one of them can be mapped to a specific software from DfAnalyzer framework, as follows:
       </p>
       <table style="width:100%">
       <tr>
         <th>ARMFUL component</th>
-        <th>JAR program from DfAnalyzer framework</th> 
+        <th>JAR program of the DfAnalyzer framework</th> 
       </tr>
       <tr>
         <td>Provenance Data Gathering</td>
@@ -71,17 +71,92 @@ DfAnalyzer framework
         <td>Raw Data Indexer</td> 
       </tr>
       <tr>
+        <td>Provenance Database</td>
+        <td>Data Ingestor</td> 
+      </tr>
+      <tr>
         <td>Query Processor</td>
         <td>Query Processor</td> 
       </tr>
     </table>
     <p align="center">
-    <b>Table 1. JAR programs from DfAnalyzer framework</b>
+    <b>Table 1. JAR programs of the DfAnalyzer framework</b>
     </p>
-      <p>
-      Besides the usage of those JAR programs by DfAnalyzer framework, another JAR program, named as <i>Data Ingestor</i>, has to be initialized to store provenance data, and extracted/indexed raw data from files into our relational database. More details about our provenance data model can be found <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">here</a>.
-      </p>
-      </section>
+
+<h3>
+DfAnalyzer programs
+</h3>
+<h4>
+Provenance Data Gatherer
+</h4>
+    <p>
+    Provenance Data Gatherer (PDG) program manages dataflow at physical (i.e., file flow) and logical (i.e., data flow) levels. PDG captures provenance and domain-specific data from scientific application code or a SWMS, generating a JSON file with the gatherer data and their dependencies. We highlight that the generated JSON files by PDG presents a hierarchical structure to be in accordance with the dataflow concepts presented in <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">our CCPE paper</a> published in 2016. 
+    </p>
+    <p>
+    More information about PDG can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pdg" target="_blank">here</a>.
+    </p>
+
+<h4>
+Raw Data Extractor
+</h4>
+    <p>
+    Before to gather domain-specific data using PDG program, users have to access and extract raw data from files. Therefore, Raw Data Extractor (RDE) program can be used to provide raw data extraction from files. To run this program, users have to define the following input arguments: 
+    <ul>
+        <li>
+        Name of the raw data extractor;
+        </li>
+        <li>
+        Directory where raw data files can be found;
+        </li>
+        <li>
+        Raw data files that have to be investigated;
+        </li>
+        <li>
+        Attributes (i.e., raw data contents) that have to be accessed and extracted from the raw data files; and
+        </li>
+        <li>
+        Cartridge for raw data extraction.
+        </li>
+      </ul>
+    </p>
+    <p>
+    Since different cartridges can be developed in ARMFUL, users are able to change the extraction algorithm according to their file format or other issues. Considering these input arguments, RDE program access each raw data file each time and extract the values of the selected attributes. All extracted raw data (from several files) are stored in an output file, which follows a Comma-Separated Values (CSV) file format with a header (i.e., selected attributes). 
+    </p>
+    <p>
+    More information about RDE can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rde" target="_blank">here</a>.
+    </p>
+
+<h4>
+Raw Data Indexer
+</h4>
+    <p>
+    Besides the raw data extraction, there are some approaches that index raw data from files to reduce the volume of data to be loaded into an external repository or a database system, such as <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a>, <a href="http://stratos.seas.harvard.edu/publications/nodb-efficient-query-execution-raw-data-files-0" target="_blank">NoDB</a>, <a href="https://infoscience.epfl.ch/record/200346/files/raw.pdf" target="_blank">RAW</a>, and <a href="https://sdm.lbl.gov/~sbyna/research/papers/2013-PDSW2013-SDS.pdf" target="_blank">SDS/Q</a>. Raw Data Indexer (RDI) has the same input arguments of RDE program, however this program generates indexes to the accessed raw data from files.
+    </p>
+    <p>
+    More information about RDI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rdi" target="_blank">here</a>.
+    </p>
+
+<h4>
+Data Ingestor
+</h4>
+    <p>
+    Once provenance and raw data have been gathered by PDG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant.
+    </p>
+    <p>
+    More details about DI program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/di" target="_blank">here</a>.
+    </p>
+
+<h4>
+Query Processor
+</h4>
+    <p>
+    Since provenance and raw data are already stored in a relational database, Query Processor (QP) can be invoked to query those stored data. This program consumes as input arguments the database connection properties and a SQL-based query. QP aims at performing a database connection and running this specified query. Therefore, QP has to identify which attributes have to be queried from provenance tables and which attributes are related to domain-specific data (raw data extracted/indexed from files).
+    </p>
+    <p>
+    More details about QP program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/qp" target="_blank">here</a>.
+    </p>
+
+    </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
