@@ -130,7 +130,7 @@ Raw Data Extractor
 Raw Data Indexer
 </h4>
     <p>
-    Besides the raw data extraction, there are some approaches that index raw data from files to reduce the volume of data to be loaded into an external repository or a database system, such as <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a>, <a href="http://stratos.seas.harvard.edu/publications/nodb-efficient-query-execution-raw-data-files-0" target="_blank">NoDB</a>, <a href="https://infoscience.epfl.ch/record/200346/files/raw.pdf" target="_blank">RAW</a>, and <a href="https://sdm.lbl.gov/~sbyna/research/papers/2013-PDSW2013-SDS.pdf" target="_blank">SDS/Q</a>. Raw Data Indexer (RDI) has the same input arguments of RDE program, however this program generates indexes to the accessed raw data from files.
+    Besides the raw data extraction, there are some approaches that index raw data from files to reduce the volume of data to be loaded into an external repository or a database system, such as <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a>, <a href="http://stratos.seas.harvard.edu/publications/nodb-efficient-query-execution-raw-data-files-0" target="_blank">NoDB</a>, <a href="https://infoscience.epfl.ch/record/200346/files/raw.pdf" target="_blank">RAW</a>, and <a href="https://sdm.lbl.gov/~sbyna/research/papers/2013-PDSW2013-SDS.pdf" target="_blank">SDS/Q</a>. Raw Data Indexer (RDI) has the same input arguments of RDE program, however this program generates indexes to the accessed raw data from files. RDI program presents some cartridges that use existing approaches, such as FastBit tool. This program also has a cartridge based on positional indexing, which considers the RAW’s implementation.
     </p>
     <p>
     More information about RDI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rdi" target="_blank">here</a>.
@@ -140,7 +140,7 @@ Raw Data Indexer
 Data Ingestor
 </h4>
     <p>
-    Once provenance and raw data have been gathered by PDG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant.
+    Once provenance and raw data have been gathered by PDG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant. 
     </p>
     <p>
     More details about DI program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/di" target="_blank">here</a>.
