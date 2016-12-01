@@ -17,7 +17,7 @@
   <body>
 
       <header>
-        <h1>ARMFUL</h1>
+        <h1>PROV-Df data model</h1>
         <p></p>
       </header>
 
@@ -46,28 +46,33 @@
       </nav>
       <section>
       <h3>
+<p><a href="index.html">Home</a> >> <a href="applications.html">Applications</a></p>
 
-<p><a href="index.html">Home</a> >> <a href="acknowledgement.html">Acknowledgements</a></p>
-
-<a id="acknowledgement" class="anchor" href="#acknowledgement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-Acknowledgements
+<a id="simulations" class="anchor" href="#provdf" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+Applications
 </h3>
+
+<h4>
+Computational Fluid Dynamics (CFD) solver
+</h4>
 <p>
-We gratefully acknowledge the support of the following agencies: <a href="http://cnpq.br" target="_blank">CNPq</a>, <a href="http://www.capes.gov.br/" target="_blank">CAPES</a>, <a href="http://www.mcti.gov.br/rnp" target="_blank">RNP</a>, <a href="http://www.faperj.br/" target="_blank">FAPERJ</a>, and the <a href="https://hpc4e.eu/" target="_blank">HPC4E</a> project. 
+CFD solver developed as presented by <a href="http://onlinelibrary.wiley.com/doi/10.1002/fld.1475/abstract" target="_blank">Elias et al. (2007)</a>.This CFD software is a Fortran90 finite element application where the kernel of the computational solution consists of a fully implicit predictor – multicorrector time integration scheme. The generalized trapezoidal rule is employed in the time discretization, with an adaptive time stepping procedure based on a proportional-integral-derivative (PID) controller.
 </p>
+
+<h4>
+Montage toolkit
+</h4>
 <p>
-<a href="index.html">ARMFUL</a> architecture is part of FAPERJ and CNPq projects, and <a href="dfanalyzer.html">DfAnalyzer</a> is part of the HPC4E project.
+<a href="http://montage.ipac.caltech.edu/" target="_blank">Montage</a> toolkit assembles astronomical images into custom mosaics, suitable for large-scale processing of the sky. Montage provides astronomers a service to build mosaics in <a href="http://fits.gsfc.nasa.gov/" target="_blank">Flexible Image Transport System (FITS)</a> format, according to the common astronomy coordinate systems, arbitrary image sizes, and rotations, and all World Coordinate System map projections. 
 </p>
 
-<p align="center">
-      <a href="http://cnpq.br" target="_blank"><img src="logo/cnpq.png" width="25%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://www.capes.gov.br/" target="_blank"><img src="logo/capes.png" width="20%"></a><br><br>
-      <a href="http://www.mcti.gov.br/rnp" target="_blank"><img src="logo/rnp.jpg" width="30%"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://www.faperj.br/" target="_blank"><img src="logo/faperj.jpg" width="30%"></a><br><br>
-      <a href="https://hpc4e.eu/" target="_blank"><img src="logo/hpc4e.svg" width="30%"></a><br><br>
+<h4>
+Sedimentation solver
+</h4>
+
+<p>
+  Parallel adaptive mesh refinement and coarsening (AMR) are optimal strategies for tackling large-scale sedimentation simulations. <a href="https://libmesh.github.io/index.html" target="_blank">libMesh</a> is an open-source finite-element library that supports parallel AMR and has been used in several multiphysics applications. As an application built upon the libMesh library, <a href="https://bitbucket.org/nacadhpc4e/libmesh-sedimentation " target="_blank">libMesh-sedimentation</a> simulates turbidity currents typically found in geological processes.
 </p>
-
-
 
       </section>
       <footer>
