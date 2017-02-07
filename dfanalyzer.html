@@ -92,17 +92,17 @@ DfAnalyzer programs
 Provenance Data Gatherer
 </h4>
     <p>
-    Provenance Data Gatherer (PDG) program manages dataflow at physical (i.e., file flow) and logical (i.e., data flow) levels. PDG captures provenance and domain-specific data from scientific application code or a SWMS, generating a JSON file with the gatherer data and their dependencies. We highlight that the generated JSON files by PDG presents a hierarchical structure to be in accordance with the dataflow concepts presented in <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">our CCPE paper</a> published in 2016. 
+    Provenance Data Gatherer (PG) program manages dataflow at physical (i.e., file flow) and logical (i.e., data flow) levels. PG captures provenance and domain-specific data from scientific application code or a SWMS, generating a JSON file with the gatherer data and their dependencies. We highlight that the generated JSON files by PG presents a hierarchical structure to be in accordance with the dataflow concepts presented in <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">our CCPE paper</a> published in 2016. 
     </p>
     <p>
-    More information about PDG can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pdg" target="_blank">here</a>.
+    More information about PG can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg" target="_blank">here</a>.
     </p>
 
 <h4>
 Raw Data Extractor
 </h4>
     <p>
-    Before to gather domain-specific data using PDG program, users have to access and extract raw data from files. Therefore, Raw Data Extractor (RDE) program can be used to provide raw data extraction from files. To run this program, users have to define the following input arguments: 
+    Before to gather domain-specific data using PG program, users have to access and extract raw data from files. Therefore, Raw Data Extractor (RDE) program can be used to provide raw data extraction from files. To run this program, users have to define the following input arguments: 
     <ul>
         <li>
         Name of the raw data extractor;
@@ -142,7 +142,7 @@ Raw Data Indexer
 Data Ingestor
 </h4>
     <p>
-    Once provenance and raw data have been gathered by PDG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant. 
+    Once provenance and raw data have been gathered by PG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant. 
     </p>
     <p>
     More details about DI program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/di" target="_blank">here</a>.
