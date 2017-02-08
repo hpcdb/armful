@@ -22,13 +22,13 @@ It aims at accessing and extracting data from a raw data file.
 * **file_name or invocation:** name of the raw data file (for `EXTRACT` operation) or the file with extracted data to be accessed (for `ACCESS` operation)
 * **{<attribute>:<attribute_type>}:** set of pairs with attribute name and attribute type (e.g., TEXT, NUMERIC, or FILE)
 
-** Optional parameters **
+**Optional parameters**
 
 * **delimeter:** special character(s) for separating attribute values in raw data files
 
 Example of RDE invocation:
 
-** raw data extraction **
+**Raw data extraction**
 
 	./bin/RDE PROGRAM:EXTRACT extractor 
 			/root/dfa ./bin/program.bin 

@@ -19,7 +19,7 @@ It aims at accessing and indexing raw data from a file.
 * **file_name:** name of the raw data file
 * **{<attribute>:<attribute_type>}:** set of pairs with attribute name and attribute type (e.g., TEXT, NUMERIC, or FILE)
 
-** Optional parameters **
+**Optional parameters**
 
 * **delimeter:** special character(s) for separating attribute values in raw data files
 * **fastbit_bin_path:** path to the binary directory where FastBit was installed. E.g., /root/program/fastbit/bin
