@@ -9,10 +9,6 @@ It aims at accessing and extracting data from a raw data file.
 		{<attribute>:<attribute_type>} 
 		[-delimeter="<delimeter>"] 
 
-
-./bin/RDE PROGRAM:EXTRACT extractor /root/dfa ./bin/program.bin [A:numeric:key,B:numeric,C:numeric]
-
-
 **Mandatory parameters**
 
 * **cartridge:** name of the implemented cartridge. At this moment, we have two types of cartridges for raw data extraction: (1) invocation of an ad-hoc program (external program), named as `PROGRAM`, and (2) execution of an algorithm implemented in RDI, such as an algorithm for CSV file format, named as `CSV`
