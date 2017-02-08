@@ -22,9 +22,9 @@ Then, it is necessary to configure the create database with the database schema 
 
 ## Data Ingestor daemon invocation
 
-Before to run Data Ingestor, a configuration file, named as *DfA.properties*, need to be created with the DI directory (attribute *di_dir*) in the same directory that user invokes DI JAR program. Moreover, this configuration file contains information about the database system, such as the database system, hostname, port, name, user, and password.
+Before to run Data Ingestor, a configuration file, named as [*DfA.properties*](DfA.properties), need to be created with the DI directory (attribute *di_dir*) in the same directory that user invokes [DI program](DI-2.0.jar). Moreover, this configuration file contains information about the database system, such as the database system, hostname, port, name, user, and password.
 
-An example of this *DfA.properties* is presented below:
+An example of this [*DfA.properties*](DfA.properties) is presented below:
 
 	# DI directory
     di_dir=/root/dfa/di_dir
@@ -39,6 +39,6 @@ An example of this *DfA.properties* is presented below:
 
 Once dataflow_analyzer database is configured, user can start DI daemon for selecting JSON files in the DI directory and storing provenance data present in those files into the provenance database.
 
-To invoke DI program as a long-running background process (or daemon), the following command line has to be used:
+To invoke [DI program](DI-2.0.jar) as a long-running background process (or daemon), the following command line has to be used:
 
 	java -jar DI-2.0.jar -daemon start
