@@ -15,81 +15,81 @@ The figure below presents WordCount steps and its associated dataflow.
 
 The manipulated files by this example can be found in [this Git directory](https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg)
 
-## JAR program
-Before to start the generation of provenance files in JSON format, a configuration file, named as [*DfA.properties*](DfA.properties), need to be created with the PG and DI directories (attributes *pg_dir* and *di_dir*, respectively) in the same directory that user invokes [PG JAR program](PG-2.0.jar). PG directory contains the file path that PG will generate JSON files. Once a JSON file was completely edited by PG program, it is moved to the Data Ingestor (DI) directory with the purpose of being consumed by DI program. 
+## PG Binary file
+
+Before to start the generation of provenance files in JSON format, a configuration file, named as [*DfA.properties*](DfA.properties), need to be created with the PG and DI directories (attributes *pg_dir* and *di_dir*, respectively) in the same directory that user invokes [PG binary file](./bin/PG-2.0). PG directory contains the file path that PG will generate JSON files. Once a JSON file was completely edited by PG program, it is moved to the Data Ingestor (DI) directory with the purpose of being consumed by DI program. 
 
 An example of this [*DfA.properties*](DfA.properties) is presented below:
 
     pg_dir=/root/dfa/pg_dir
     di_dir=/root/dfa/di_dir
 
-Considering WordCount example, the following command lines can be invoked, using PG JAR program, for generating a JSON file with prospective provenance data. 
+Considering WordCount example, the following command lines can be invoked, using PG binary file, for generating a JSON file with prospective provenance data. 
 
 Command lines for prospective provenance data:
 
 	# Dataflow dfexample
-    java -jar PG.jar -dataflow -tag dfexample
+    ./bin/PG-2.0 -dataflow -tag dfexample
 
     # Transformation dt1
-	java -jar PG.jar -transformation -dataflow dfexample -tag dt1
-	java -jar PG.jar -program -dataflow dfexample -transformation dt1 -name DT1 -filepath /root/bin/DT1.bin
+	./bin/PG-2.0 -transformation -dataflow dfexample -tag dt1
+	./bin/PG-2.0 -program -dataflow dfexample -transformation dt1 -name DT1 -filepath /root/bin/DT1.bin
 
 	# Data set ds1
-	java -jar PG.jar -set -dataflow dfexample -transformation dt1 -tag ds1 -type input
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE_ID -type numeric
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE -type file
+	./bin/PG-2.0 -set -dataflow dfexample -transformation dt1 -tag ds1 -type input
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE_ID -type numeric
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE -type file
 
 	# Data set ds2
-	java -jar PG.jar -set -dataflow dfexample -transformation dt1 -tag ds2 -type output
-	java -jar PG.jar -extractor -dataflow dfexample -transformation dt1 -set ds2 -tag ext1 -algorithm EXTRACTION:PROGRAM
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt1 -set ds2 -name FILE_ID -type numeric
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt1 -set ds2 -name WORD_FOUND -type text -extractor ext1
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt1 -set ds2 -name COUNT -type numeric -extractor ext1
+	./bin/PG-2.0 -set -dataflow dfexample -transformation dt1 -tag ds2 -type output
+	./bin/PG-2.0 -extractor -dataflow dfexample -transformation dt1 -set ds2 -tag ext1 -algorithm EXTRACTION:PROGRAM
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds2 -name FILE_ID -type numeric
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds2 -name WORD_FOUND -type text -extractor ext1
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds2 -name COUNT -type numeric -extractor ext1
 
 	# Transformation dt2
-	java -jar PG.jar -transformation -dataflow dfexample -tag dt2
-	java -jar PG.jar -program -dataflow dfexample -transformation dt2 -name DT2 -filepath /root/bin/DT2.bin
+	./bin/PG-2.0 -transformation -dataflow dfexample -tag dt2
+	./bin/PG-2.0 -program -dataflow dfexample -transformation dt2 -name DT2 -filepath /root/bin/DT2.bin
 
 	# Set ds2
-	java -jar PG.jar -set -dataflow dfexample -transformation dt2 -tag ds2 -type input -dependency dt1
+	./bin/PG-2.0 -set -dataflow dfexample -transformation dt2 -tag ds2 -type input -dependency dt1
 
 	#Set ds3
-	java -jar PG.jar -set -dataflow dfexample -transformation dt2 -tag ds3 -type output 
-	java -jar PG.jar -extractor -dataflow dfexample -transformation dt2 -set ds3 -tag ext2 -algorithm EXTRACTION:PROGRAM
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt2 -set ds3 -name FILE_ID -type numeric 
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt2 -set ds3 -name WORD -type text -extractor ext2
-	java -jar PG.jar -attribute -dataflow dfexample -transformation dt2 -set ds3 -name TOTAL -type numeric -extractor ext2
+	./bin/PG-2.0 -set -dataflow dfexample -transformation dt2 -tag ds3 -type output 
+	./bin/PG-2.0 -extractor -dataflow dfexample -transformation dt2 -set ds3 -tag ext2 -algorithm EXTRACTION:PROGRAM
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt2 -set ds3 -name FILE_ID -type numeric 
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt2 -set ds3 -name WORD -type text -extractor ext2
+	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt2 -set ds3 -name TOTAL -type numeric -extractor ext2
 
 	# Data ingestion 
-	java -jar PG.jar -ingest -dataflow dfexample
+	./bin/PG-2.0 -ingest -dataflow dfexample
 
 Command lines for retrospective provenance data:
 
 	# Task 1 - RUNNING
-	java -jar PG-2.0.jar -task -dataflow dfexample -transformation dt1 -id 1 -resource local -workspace /root/files -invocation "command.txt" -status RUNNING
-	java -jar PG-2.0.jar -file -dataflow dfexample -transformation dt1 -id 1 -name "file-1.csv" -path /root/files
-	java -jar PG-2.0.jar -element -dataflow dfexample -transformation dt1 -id 1 -set ds1 -element [{'1;/root/files/file-1.csv'}]
-	java -jar PG-2.0.jar -performance -starttime -dataflow dfexample -transformation dt1 -task 1 -computation ./computation.sh
-	java -jar PG-2.0.jar -performance -endtime -dataflow dfexample -transformation dt1 -task 1 -computation ./computation.sh
-	java -jar PG-2.0.jar -performance -starttime -dataflow dfexample -transformation dt1 -task 1 -extraction ./extraction.sh
-	java -jar PG-2.0.jar -ingest -task dfexample dt1 1
+	./bin/PG-2.0 -task -dataflow dfexample -transformation dt1 -id 1 -resource local -workspace /root/files -invocation "command.txt" -status RUNNING
+	./bin/PG-2.0 -file -dataflow dfexample -transformation dt1 -id 1 -name "file-1.csv" -path /root/files
+	./bin/PG-2.0 -element -dataflow dfexample -transformation dt1 -id 1 -set ds1 -element [{'1;/root/files/file-1.csv'}]
+	./bin/PG-2.0 -performance -starttime -dataflow dfexample -transformation dt1 -task 1 -computation ./computation.sh
+	./bin/PG-2.0 -performance -endtime -dataflow dfexample -transformation dt1 -task 1 -computation ./computation.sh
+	./bin/PG-2.0 -performance -starttime -dataflow dfexample -transformation dt1 -task 1 -extraction ./extraction.sh
+	./bin/PG-2.0 -ingest -task dfexample dt1 1
 
 	# Task 1 - FINISHED 
-	java -jar PG-2.0.jar -task -dataflow dfexample -transformation dt1 -id 1 -output "outputFile.txt" -status FINISHED
-	java -jar PG-2.0.jar -element -dataflow dfexample -transformation dt1 -id 1 -set ds2 -element [{'1;/root/files/file-1.data'}]
-	java -jar PG-2.0.jar -performance -endtime -dataflow dfexample -transformation dt1 -task 1 -extraction ./extraction.sh
-	java -jar PG-2.0.jar -task -dataflow dfexample -transformation dt1 -id 1 -endtime
-	java -jar PG-2.0.jar -ingest -task dfexample dt1 1
+	./bin/PG-2.0 -task -dataflow dfexample -transformation dt1 -id 1 -output "outputFile.txt" -status FINISHED
+	./bin/PG-2.0 -element -dataflow dfexample -transformation dt1 -id 1 -set ds2 -element [{'1;/root/files/file-1.data'}]
+	./bin/PG-2.0 -performance -endtime -dataflow dfexample -transformation dt1 -task 1 -extraction ./extraction.sh
+	./bin/PG-2.0 -ingest -task dfexample dt1 1
 
 
 	# Task 2 - RUNNING 
-	java -jar PG-2.0.jar -task -dataflow dfexample -transformation dt2 -id 1 -dependencies [{dt1},{1}] -resource local -workspace /root/files -invocation "command.txt" -status RUNNING -output "outputFile.txt"
-	java -jar PG-2.0.jar -element -dataflow dfexample -transformation dt2 -id 1 -set ds3 -element [{'1;/root/files/file-2.data'}]
-	java -jar PG-2.0.jar -ingest -task dfexample dt1 1
+	./bin/PG-2.0 -task -dataflow dfexample -transformation dt2 -id 1 -dependencies [{dt1},{1}] -resource local -workspace /root/files -invocation "command.txt" -status RUNNING -output "outputFile.txt"
+	./bin/PG-2.0 -element -dataflow dfexample -transformation dt2 -id 1 -set ds3 -element [{'1;/root/files/file-2.data'}]
+	./bin/PG-2.0 -ingest -task dfexample dt1 1
 
 ## Java API
 
-Those JSON files with provenance data can also be generated using our Java API. For instace, considering the WordCount application, we developed a class, named as WordCount, that generates JSON files for prospective and retrospective provenance data. The information from the configuration file ([*DfA.properties*](DfA.properties)), presented to the invocation of JAR program, was specified in an instance of the class Configuration.
+Those JSON files with provenance data can also be generated using our Java API. For instace, considering the WordCount application, we developed a class, named as WordCount, that generates JSON files for prospective and retrospective provenance data. The information from the configuration file ([*DfA.properties*](DfA.properties)), presented to the invocation of PG binary file, was specified in an instance of the class Configuration.
 
 	package main;
 
