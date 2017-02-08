@@ -1,10 +1,14 @@
 # Provenance Data Gatherer (PG)
 
-### Software requirements
+----
+## Software requirements
 1. [Java SE Development Kit (JDK)](http://www.oracle.com/technetwork/pt/java/index.html)
 
-### Example of WordCount Application
+----
+## Example of WordCount Application
+
 To present PG, we consider a classic MapReduce application: WordCount. This application is divided in two steps:
+
 1. Detection of word occurrences in each input file; and
 2. Aggregation of occurrences by word to compute the amount of occurrences of each word.
 
@@ -13,7 +17,8 @@ The figure below presents WordCount steps and its associated dataflow.
 
 The manipulated files by this example can be found in [this Git directory](https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg)
 
-### JAR program
+----
+## JAR program
 Before to start the generation of provenance files in JSON format, a configuration file, named as *DfA.properties*, need to be created with the PG and DI directories (attributes *pg_dir* and *di_dir*, respectively) in the same directory that user invokes PG JAR program. PG directory contains the file path that PG will generate JSON files. Once a JSON file was completely edited by PG program, it is moved to the Data Ingestor (DI) directory with the purpose of being consumed by DI program. 
 
 An example of this *DfA.properties* is presented below:
@@ -85,7 +90,8 @@ Command lines for retrospective provenance data:
 	java -jar PG-2.0.jar -element -dataflow dfexample -transformation dt2 -id 1 -set ds3 -element [{'1;/root/files/file-2.data'}]
 	java -jar PG-2.0.jar -ingest -task dfexample dt1 1
 
-### Java API
+----
+## Java API
 Those JSON files with provenance data can also be generated using our Java API. For instace, considering the WordCount application, we developed a class, named as WordCount, that generates JSON files for prospective and retrospective provenance data. The information from the configuration file (DfA.properties), presented to the invocation of JAR program, was specified in an instance of the class Configuration.
 
 	package main;
