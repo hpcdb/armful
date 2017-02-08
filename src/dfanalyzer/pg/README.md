@@ -1,10 +1,8 @@
 # Provenance Data Gatherer (PG)
 
-----
 ## Software requirements
 1. [Java SE Development Kit (JDK)](http://www.oracle.com/technetwork/pt/java/index.html)
 
-----
 ## Example of WordCount Application
 
 To present PG, we consider a classic MapReduce application: WordCount. This application is divided in two steps:
@@ -17,7 +15,6 @@ The figure below presents WordCount steps and its associated dataflow.
 
 The manipulated files by this example can be found in [this Git directory](https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg)
 
-----
 ## JAR program
 Before to start the generation of provenance files in JSON format, a configuration file, named as *DfA.properties*, need to be created with the PG and DI directories (attributes *pg_dir* and *di_dir*, respectively) in the same directory that user invokes PG JAR program. PG directory contains the file path that PG will generate JSON files. Once a JSON file was completely edited by PG program, it is moved to the Data Ingestor (DI) directory with the purpose of being consumed by DI program. 
 
@@ -90,7 +87,6 @@ Command lines for retrospective provenance data:
 	java -jar PG-2.0.jar -element -dataflow dfexample -transformation dt2 -id 1 -set ds3 -element [{'1;/root/files/file-2.data'}]
 	java -jar PG-2.0.jar -ingest -task dfexample dt1 1
 
-----
 ## Java API
 Those JSON files with provenance data can also be generated using our Java API. For instace, considering the WordCount application, we developed a class, named as WordCount, that generates JSON files for prospective and retrospective provenance data. The information from the configuration file (DfA.properties), presented to the invocation of JAR program, was specified in an instance of the class Configuration.
 
@@ -122,26 +118,26 @@ Those JSON files with provenance data can also be generated using our Java API. 
 	    }
 
 	    private static void generateProspectiveProvenanceData() {
-		// configuration file
+			// configuration file
 	        Configuration config = new Configuration(
 	                "/root/dfa/pg_dir/",
 	                "/root/dfa/di/_dir/");
 	        String path = "";
 
-		// dataflow specification
+			// dataflow specification
 	        Dataflow df = new Dataflow("dfexample");
 		
-		// transformation 1
+			// transformation 1
 	        Transformation dt1 = new Transformation(df, "dt1");
 	        Program pDt1 = new Program(dt1, "DT1", "/root/bin/DT1.bin");
 		
-		// set 1
+			// set 1
 	        Set ds1 = new Set(df, dt1, "ds1", SetType.INPUT, null);
 	        List<String> attsNames = new ArrayList<>(Arrays.asList("FILE_ID", "FILE"));
 	        List<String> attsTypes = new ArrayList<>(Arrays.asList("numeric", "file"));
 	        ArrayList<Attribute> attsIdsDt1 = ds1.addAttributes(attsNames, attsTypes);
 		
-		// set2
+			// set2
 	        Set ds2 = new Set(df, dt1, "ds2", SetType.OUTPUT, null);
 	        Extractor extDt1 = new Extractor(df, ds2, "ext1", "EXTRACTION", "PROGRAM");
 	        attsNames = new ArrayList<>(Arrays.asList("FILE_ID", "WORD_FOUND", "COUNT"));
@@ -150,14 +146,14 @@ Those JSON files with provenance data can also be generated using our Java API. 
 	        attsOdsDt1.get(1).setExtractor(extDt1);
 	        attsOdsDt1.get(2).setExtractor(extDt1);
 		
-		// transformation 2
+			// transformation 2
 	        Transformation dt2 = new Transformation(df, "dt2");
 	        Program pDt2 = new Program(dt2, "DT2", "/root/bin/DT2.bin");
 		
-		// set 2
+			// set 2
 	        Set ds2Dt2 = new Set(df, dt2, "ds2", SetType.INPUT, dt1);
 		
-		// set 3
+			// set 3
 	        Set ds3 = new Set(df, dt2, "ds3", SetType.OUTPUT, null);
 	        Extractor extDt2 = new Extractor(df, ds3, "ext2", "EXTRACTION", "PROGRAM");
 	        attsNames = new ArrayList<>(Arrays.asList("FILE_ID", "WORD", "TOTAL"));
@@ -166,11 +162,11 @@ Those JSON files with provenance data can also be generated using our Java API. 
 	        attsDsDt2.get(1).setExtractor(extDt2);
 	        attsDsDt2.get(2).setExtractor(extDt2);
 		
-		// write JSON file
+			// write JSON file
 	        df.writeJSON(config);
 
-		// task 1
-		// running
+			// task 1
+			// running
 	        Task task1 = new Task(dt1, "1", null, "local",
 	                "/root/files", "command.txt", "RUNNING", null, null);
 	        File file1 = new File(task1, "/root/files", "file-1.csv");
@@ -181,19 +177,19 @@ Those JSON files with provenance data can also be generated using our Java API. 
 	        Performance perf2 = new Performance(task1, "./extraction.sh", "EXTRACTION", null);
 	        perf2.setStartTime();
 	        task1.writeJSON(config);
-		// finished        
+			// finished        
 	        task1.setOutput(path + "outputFile.txt");
 	        Element element2 = new Element(task1, ds2, Arrays.asList("1;/root/files/file-1.data"));
 	        perf2.setEndTime();
 	        task1.setStatus("FINISHED");
 	        task1.writeJSON(config);
 		
-		// task 2
+			// task 2
 	        Task task2 = new Task(dt2, "1", null, "local", "/root/files",
 	                "command.txt", "RUNNING", path + "outputFile.txt", null);
 	        Element element3 = new Element(task2, ds3, Arrays.asList("1;/root/files/file-2.data"));
 		
-		// dependency
+			// dependency
 	        String[] dtDeps = {"dt1"};
 	        String[] idDeps = {"1"};
 	        ArrayList<String[]> ids = new ArrayList<>();

@@ -1,12 +1,10 @@
 # Data Ingestor (DI)
 
-----
 ## Software requirements
 
 1. [Java SE Development Kit (JDK)](http://www.oracle.com/technetwork/pt/java/index.html)
 2. [MonetDB database system](https://www.monetdb.org/Home)
 
-----
 ## Database configuration
 
 After the installation of MonetDB database system (see [MonetDB Installation Guide](https://www.monetdb.org/Documentation/Guide/Installation)), a database named as *dataflow_analyzer* has to be created. The following command lines present how to set a directory for storing MonetDB's data and to create a database.
@@ -20,9 +18,8 @@ To test the database creation, it is possible to access a command-line interface
 
 	mclient -u monetdb -d dataflow_analyzer
 
-Then, it is necessary to configure the create database with the database schema from DfAnalyzer. To do that, the SQL script (*create-dfa-db.sql*) need to be run in the database dataflow_analyzer. More information about how to run a SQL script in MonetDB can be found [here](https://www.monetdb.org/Documentation/UserGuide/DumpRestore).
+Then, it is necessary to configure the create database with the database schema from DfAnalyzer. To do that, the SQL script ([*create-dfa-db.sql*](create-dfa-db.sql)) need to be run in the database dataflow_analyzer. More information about how to run a SQL script in MonetDB can be found [here](https://www.monetdb.org/Documentation/UserGuide/DumpRestore).
 
-----
 ## Data Ingestor daemon invocation
 
 Before to run Data Ingestor, a configuration file, named as *DfA.properties*, need to be created with the DI directory (attribute *di_dir*) in the same directory that user invokes DI JAR program. Moreover, this configuration file contains information about the database system, such as the database system, hostname, port, name, user, and password.
