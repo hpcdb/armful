@@ -1,10 +1,10 @@
-# Raw Data Indexer (RDI) component
+# Raw Data Indexer (RDI) 
 
 It aims at accessing and indexing raw data from a file. 
 
 ## RDI invocation
 
-	RDI <cartridge>:<extension>:<operation> <extractor_name> 
+	RDI <cartridge>:<operation> <extractor_name> 
 		<directory_path> <file_name> 
 		{<attribute>:<attribute_type>} 
 		[-delimeter="<delimeter>"] 
@@ -12,9 +12,8 @@ It aims at accessing and indexing raw data from a file.
 
 **Mandatory parameters**
 
-* **cartridge:** type of the cartridge, i.e., raw data extraction (`EXTRACTION`) or indexing (`INDEXING`)
-* **extension:** it depends on the selected cartridge. For instance, EXTRACTION cartridge supports an invocation of an external program (`PROGRAM`) or an implemented algorithm for gathering data from CSV files (`CSV`).
-* **operation:** there are three operations (`EXTRACT`, `INDEX`, `ACCESS`). `EXTRACT` and `INDEX` operations are specific for raw data extraction and indexing, respectively. `ACCESS` gather raw data using or not indexes, depending on the cartridge used before.
+* **cartridge:** name of the implemented cartridge, e.g., a cartridge that implements an algorithm for indexing raw data from CSV files (`CSV`)
+* **operation:** there are two operations (`INDEX`, `ACCESS`). `INDEX` operation generates indexes to the gathered raw data. `ACCESS` gather raw data using the generated indexes in the previous operation
 * **extractor_name:** name of the extractor, e.g., positionalIndexingExtractor
 * **directory_path:** path of the directory that presents the raw data file
 * **file_name:** name of the raw data file
@@ -27,8 +26,8 @@ It aims at accessing and indexing raw data from a file.
 
 Example of RDI invocation:
 
-	./bin/RDI INDEXING:OPTIMIZED_FASTBIT:EXTRACT ofb-idx-f1 
-		$CPATH/ofb-idx-f1 file-1.csv 
+	./bin/RDI OPTIMIZED_FASTBIT:INDEX ofb-idx-f1 
+		/root/dfa file-1.csv 
 		[customerID:numeric:key,country:text,continent:text] 
 		-delimiter="," 
 		-bin="/root/program/fastbit/bin"
@@ -55,21 +54,21 @@ CUSTOMERID;COUNTRY;CONTINENT
 3;'France';'Europe'   
 4;'United_Kingdom';'Europe'  
 5;'France';'Europe'  
-6;'United_Kingdom';'Europe'  
+6;'United_Kingdom';'Europe' 
 7;'Belgium';'Europe'  
 8;'Portugal';'Europe'  
 
 #####csv-idx-f1.index
 > 
 FILENAME;CUSTOMERID;COUNTRY;CONTINENT    
-'/root/csv-idx-f1/file-1.csv';1;32;49  
-'/root/csv-idx-f1/file-1.csv';2;60;76  
-'/root/csv-idx-f1/file-1.csv';3;94;103  
-'/root/csv-idx-f1/file-1.csv';4;114;131  
-'/root/csv-idx-f1/file-1.csv';5;142;151  
-'/root/csv-idx-f1/file-1.csv';6;162;179  
-'/root/csv-idx-f1/file-1.csv';7;190;200  
-'/root/csv-idx-f1/file-1.csv';8;211;222  
+'/root/files/file-1.csv';1;32;49  
+'/root/files/file-1.csv';2;60;76  
+'/root/files/file-1.csv';3;94;103  
+'/root/files/file-1.csv';4;114;131  
+'/root/files/file-1.csv';5;142;151  
+'/root/files/file-1.csv';6;162;179  
+'/root/files/file-1.csv';7;190;200  
+'/root/files/file-1.csv';8;211;222  
 
 ## Indexing algorithms
 ### CSV

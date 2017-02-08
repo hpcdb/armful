@@ -1,0 +1,9 @@
+FILENAME;ROWID;CUSTOMERID;COUNTRY;CONTINENT
+'raw/fb-idx-f1/indexes1';1;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';2;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';3;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';4;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';5;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';6;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';7;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'
+'raw/fb-idx-f1/indexes1';8;'CUSTOMERID.idx';'COUNTRY.idx';'CONTINENT.idx'

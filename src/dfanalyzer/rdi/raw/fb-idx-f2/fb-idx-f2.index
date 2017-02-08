@@ -1,0 +1,4 @@
+FILENAME;ROWID;CUSTOMERID;AGE;GENDER;CHILDREN;STATUS
+'raw/fb-idx-f2/indexes1';1;'CUSTOMERID.idx';'AGE.idx';'GENDER.idx';'CHILDREN.idx';'STATUS.idx'
+'raw/fb-idx-f2/indexes1';2;'CUSTOMERID.idx';'AGE.idx';'GENDER.idx';'CHILDREN.idx';'STATUS.idx'
+'raw/fb-idx-f2/indexes1';3;'CUSTOMERID.idx';'AGE.idx';'GENDER.idx';'CHILDREN.idx';'STATUS.idx'

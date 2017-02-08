@@ -122,7 +122,7 @@ Those JSON files with provenance data can also be generated using our Java API. 
 			// configuration file
 	        Configuration config = new Configuration(
 	                "/root/dfa/pg_dir/",
-	                "/root/dfa/di/_dir/");
+	                "/root/dfa/di_dir/");
 	        String path = "";
 
 			// dataflow specification

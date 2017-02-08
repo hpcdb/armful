@@ -1,0 +1,57 @@
+# metadata file written by ibis::part::writeMetaData
+# on Wed Feb  8 20:01:03 2017
+
+BEGIN HEADER
+Name = "indexes1"
+Description = "/home/vitor/Documents/program/fastbit/bin/ardea -d raw/fb-idx-f2/indexes1 -m CUSTOMERID:NUMERIC, AGE:int, GENDER:text, CHILDREN:int, STATUS:text -t raw/fb-idx-f2/file-2.csv -b ,"
+Number_of_columns = 6
+Number_of_rows = 3
+Timestamp = 1486591263
+State = 1
+index = <binning none/><encoding equality/>
+END HEADER
+
+Begin Column
+name = "AGE"
+data_type = "INT"
+minimum = 10
+maximum = 30
+sorted = true
+End Column
+
+Begin Column
+name = "CHILDREN"
+data_type = "INT"
+minimum = 0
+maximum = 4
+End Column
+
+Begin Column
+name = "CUSTOMERID"
+data_type = "INT"
+minimum = 1
+maximum = 3
+sorted = true
+End Column
+
+Begin Column
+name = "GENDER"
+description = GENDER 
+data_type = "TEXT"
+index=<binning none/><encoding equality/>
+End Column
+
+Begin Column
+name = "RowID"
+data_type = "INT"
+minimum = 1
+maximum = 3
+sorted = true
+End Column
+
+Begin Column
+name = "STATUS"
+description = STATUS 
+data_type = "TEXT"
+index=<binning none/><encoding equality/>
+End Column
