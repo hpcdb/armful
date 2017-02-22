@@ -35,12 +35,12 @@ Command lines for prospective provenance data:
 	./bin/PG-2.0 -transformation -dataflow dfexample -tag dt1
 	./bin/PG-2.0 -program -dataflow dfexample -transformation dt1 -name DT1 -filepath /root/bin/DT1.bin
 
-	# Data set ds1
+	# dataset ds1
 	./bin/PG-2.0 -set -dataflow dfexample -transformation dt1 -tag ds1 -type input
 	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE_ID -type numeric
 	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds1 -name FILE -type file
 
-	# Data set ds2
+	# dataset ds2
 	./bin/PG-2.0 -set -dataflow dfexample -transformation dt1 -tag ds2 -type output
 	./bin/PG-2.0 -extractor -dataflow dfexample -transformation dt1 -set ds2 -tag ext1 -algorithm EXTRACTION:PROGRAM
 	./bin/PG-2.0 -attribute -dataflow dfexample -transformation dt1 -set ds2 -name FILE_ID -type numeric
