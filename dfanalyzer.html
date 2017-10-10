@@ -152,7 +152,7 @@ Data Ingestor
 Query Processor
 </h4>
     <p>
-    Since provenance and raw data are already stored in a relational database, Query Processor (QP) can be invoked to query those stored data. This program consumes as input arguments the database connection properties and a SQL-based query. QP aims at performing a database connection and running this specified query. Therefore, QP has to identify which attributes have to be queried from provenance tables and which attributes are related to domain-specific data (raw data extracted/indexed from files).
+    Since provenance and raw data are already stored in a relational database, Query Processor (QP) can be invoked to query those stored data. This program consumes as input arguments the database connection properties and the elements of the query the user is interested in. Then, in turn, it produces as output a SQL-based query. QP aims at performing a database connection and running the generated query. Therefore, QP has to identify which attributes have to be queried from provenance tables and which attributes are related to domain-specific data (raw data extracted / indexed from files).
     </p>
     <p>
     More details about QP program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/qp" target="_blank">here</a>.
