@@ -39,6 +39,8 @@ capable of generating a SQL code in a hassle-free manner.
 
 ## Example
 
+**Table**: arguments for `generateSqlQuery`:
+
 Argument | Value
 --- | ---
 D | D
@@ -50,7 +52,22 @@ selections | {osolversimulationflow.time > 2, osolversimulationflow.time < 10, o
 dsIncludes | null
 dsExcludes | null
 
+**Code**: SQL-based code returned from `generateSqlQuery`:
 
+```sql
+SELECT osolversimulationflow.time, osolversimulationflow.flow_final_linear_residual, osolversimulationflow.flow_norm_delta_u, osolversimulationtransport.transport_final_linear_residual, osolversimulationtransport.transport_norm_delta_u, ovisualization.png, omeshwriter.xdmf
+FROM osolversimulationflow, osolversimulationtransport, ovisualization, omeshwriter
+WHERE (osolversimulationflow.time > 2) 
+AND (osolversimulationflow.time < 10) 
+AND (osolversimulationflow.r = 1) 
+AND (osolversimulationflow.solversimulationtransport_task_id = osolversimulationtransport.solversimulationtransport_task_id) 
+AND (osolversimulationtransport.visualization_task_id = ovisualization.visualization_task_id) 
+AND (osolversimulationtransport.meshwriter_task_id = omeshwriter.meshwriter_task_id);
+```
+
+**Figure**: datasets selected in the previous query:
+
+![](experiments-dataflow-3.png)
 
 
 <!-- vim: tw=80 -->
