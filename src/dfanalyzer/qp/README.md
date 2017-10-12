@@ -37,4 +37,20 @@ contains the following arguments:
 By calling <tt>generateSqlQuery</tt> with the desired arguments, the user is
 capable of generating a SQL code in a hassle-free manner.
 
+## Example
+
+Argument | Value
+--- | ---
+D | D
+dsOrigins | {osolversimulationflow}
+dsDestinations | {ovisualization, omeshwriter}
+type | physical
+projections | {osolversimulationflow.time, osolversimulationflow.flow_final_linear_residual, osolversimulationflow.flow_norm_delta_u, osolversimulationtransport.transport_final_linear_residual, osolversimulationtransport.transport_norm_delta_u, ovisualization.png, omeshwriter.xdmf}
+selections | {osolversimulationflow.time > 2, osolversimulationflow.time < 10, osolversimulationflow.r = 1}
+dsIncludes | null
+dsExcludes | null
+
+
+
+
 <!-- vim: tw=80 -->
