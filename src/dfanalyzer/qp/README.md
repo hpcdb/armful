@@ -69,5 +69,22 @@ AND (osolversimulationtransport.meshwriter_task_id = omeshwriter.meshwriter_task
 
 ![](experiments-dataflow-3.png)
 
+**Output**: sample results from the previous query:
+
+time | flow_linear_residual | flow_norm_delta_u | transport_final_linear_residual | transport_norm_delta_u | png | xdmf
+--- | --- | --- | --- | --- | --- | ---
+3.10093 | 0.31609 | 0.00225 | 0.00030 |   0.00072 |  9999.png | 2.xmf
+3.10093 | 0.31609 | 0.00225 | 0.00030 |         0 |  9999.png | 2.xmf
+3.10093 | 0.31609 | 0.00225 | 0.00025 | 2.224e-06 |  9999.png | 2.xmf
+3.10093 | 0.31609 | 0.00225 | 0.00025 |         0 |  9999.png | 2.xmf
+5.41246 | 0.24713 | 0.00191 | 0.00073 | 0.0006674 | 14999.png | 3.xmf
+5.41246 | 0.24713 | 0.00191 | 0.00073 |         0 | 14999.png | 3.xmf
+5.41246 | 0.24713 | 0.00191 | 0.00048 | 4.693e-06 | 14999.png | 3.xmf
+5.41246 | 0.24713 | 0.00191 | 0.00048 |         0 | 14999.png | 3.xmf
+7.86956 | 0.27832 | 0.00563 | 0.00071 | 0.0007289 | 19999.png | 4.xmf
+7.86956 | 0.27832 | 0.00563 | 0.00071 |         0 | 19999.png | 4.xmf
+7.86956 | 0.27832 | 0.00563 | 0.00026 | 2.551e-06 | 19999.png | 4.xmf
+7.86956 | 0.27832 | 0.00563 | 0.00026 |         0 | 19999.png | 4.xmf
+
 
 <!-- vim: tw=80 -->
