@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>ARMFUL</title>
+    <title>DfAnalyzer</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -13,158 +14,172 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  </head>
-  <body>
+</head>
 
-      <header>
+<body>
+
+    <header>
         <h1>DfAnalyzer tool</h1>
         <p></p>
-      </header>
+    </header>
 
-      <div id="banner">
+    <div id="banner">
         <span id="logo"></span>
 
         <a href="https://github.com/hpcdb/armful" class="button fork"><strong>View On GitHub</strong></a>
         <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/hpcdb/armful/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/hpcdb/armful/tarball/master" class="button">TAR</a></li>
-          </ul>
+            <span>Downloads:</span>
+            <ul>
+                <li><a href="https://github.com/hpcdb/armful/zipball/master" class="button">ZIP</a></li>
+                <li><a href="https://github.com/hpcdb/armful/tarball/master" class="button">TAR</a></li>
+            </ul>
         </div>
-      </div><!-- end banner -->
+    </div>
+    <!-- end banner -->
 
     <div class="wrapper">
-      <nav>
-        <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
-        <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
-        <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
-        <ul><a href="prov-df.html"><strong>PROV-Df</strong></a></ul>
-        <ul><a href="simulations.html"><strong>Numerical Simulations</strong></a></ul>
-        <ul><a href="applications.html"><strong>Applications</strong></a></ul>
-        <ul><a href="team.html"><strong>Our team</strong></a></ul>
-        <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
-        <ul><a href="publications.html"><strong>Publications</strong></a></ul>
-      </nav>
-      <section>
-      <h3>
-<p><a href="index.html">Home</a> >> <a href="dfanalyzer.html">DfAnalyzer</a></p>
-<a id="dfanalyzer" class="anchor" href="#dfanalyzer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-DfAnalyzer tool
-</h3>
-      <p>
-      DfAnalyzer tool is an instantiation of ARMFUL architecture to provide dataflow analysis to scientific applications. By coupling DfAnalyzer components to the source code of scientific applications, raw data is extracted and related along a dataflow ready for queries at runtime. DfAnalyzer has features that help monitoring, debugging, provenance registration and steering, all at runtime. Its light components do not harm the parallel performance of the scientific applications. As opposed to SWMS, DfAnalyzer keeps all the parallel execution control at the scientific application code. Therefore, applications may use highly efficient libraries or invoke black-box parallel code. However, DfAnalyzer can also be used by SWMS developers, so that they can incorporate user steering support. Considering the ARMFUL’s components, the following table shows how each one of them is mapped to DfAnalyzer:
-      </p>
-      <table style="width:100%">
-      <tr>
-        <th>ARMFUL component</th>
-        <th>JAR program of the DfAnalyzer tool</th> 
-      </tr>
-      <tr>
-        <td>Provenance Data Gathering</td>
-        <td>Provenance Data Gatherer</td> 
-      </tr>
-      <tr>
-        <td>Raw Data Extraction</td>
-        <td>Raw Data Extractor</td> 
-      </tr>
-      <tr>
-        <td>Index Generation</td>
-        <td>Raw Data Indexer</td> 
-      </tr>
-      <tr>
-        <td>Provenance Database</td>
-        <td>Data Ingestor</td> 
-      </tr>
-      <tr>
-        <td>Query Processor</td>
-        <td>Query Processor</td> 
-      </tr>
-    </table>
-    <p align="center">
-    <b>Table 1. JAR programs of the DfAnalyzer tool</b>
-    </p>
+        <nav>
+            <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
+            <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
+            <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
+            <ul><a href="prov-df.html"><strong>PROV-Df</strong></a></ul>
+            <ul><a href="simulations.html"><strong>Numerical Simulations</strong></a></ul>
+            <ul><a href="applications.html"><strong>Applications</strong></a></ul>
+            <ul><a href="team.html"><strong>Our team</strong></a></ul>
+            <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
+            <ul><a href="publications.html"><strong>Publications</strong></a></ul>
+        </nav>
+        <section>
+            <h3>
+                <p><a href="index.html">Home</a> >> <a href="dfanalyzer.html">DfAnalyzer</a></p>
+                <a id="dfanalyzer" class="anchor" href="#dfanalyzer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> DfAnalyzer tool
+            </h3>
+            <p>
+                DfAnalyzer tool is an instantiation of ARMFUL architecture to provide dataflow analysis to scientific applications. By coupling DfAnalyzer components to the source code of scientific applications, raw data is extracted and related along a dataflow ready
+                for queries at runtime. DfAnalyzer has features that help monitoring, debugging, provenance registration and steering, all at runtime. Its light components do not harm the parallel performance of the scientific applications. As opposed
+                to SWMS, DfAnalyzer keeps all the parallel execution control at the scientific application code. Therefore, applications may use highly efficient libraries or invoke black-box parallel code. DfAnalyzer can also be used by computational
+                and computer specialists, so that they can incorporate user steering support. Considering the ARMFUL’s components, the following table shows how each one of them is mapped to DfAnalyzer:
+            </p>
+            <table style="width:100%">
+                <tr>
+                    <th>ARMFUL component</th>
+                    <th>DfAnalyzer component</th>
+                </tr>
+                <tr>
+                    <td>Provenance Data Gathering</td>
+                    <td>Provenance Data Extractor</td>
+                </tr>
+                <tr>
+                    <td>Raw Data Extraction</td>
+                    <td>Raw Data Extractor</td>
+                </tr>
+                <tr>
+                    <td>Index Generation</td>
+                    <td>Raw Data Indexer</td>
+                </tr>
+                <tr>
+                    <td>Query Processor</td>
+                    <td>Dataflow Viewer and Query Interface</td>
+                </tr>
+            </table>
+            <p align="center">
+                <b>Table 1. Components of DfAnalyzer</b>
+            </p>
 
-<h3>
-DfAnalyzer programs
-</h3>
-<h4>
-Provenance Data Gatherer
-</h4>
-    <p>
-    Provenance Data Gatherer (PG) program manages dataflow at physical (i.e., file flow) and logical (i.e., data flow) levels. PG captures provenance and domain-specific data from scientific application code or a SWMS, generating a JSON file with the gatherer data and their dependencies. We highlight that the generated JSON files by PG presents a hierarchical structure to be in accordance with the dataflow concepts presented in <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">our CCPE paper</a> published in 2016. 
-    </p>
-    <p>
-    More information about PG can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg" target="_blank">here</a>.
-    </p>
+            <h3>
+                DfAnalyzer Components
+            </h3>
+            <h4>
+                Provenance Data Extractor
+            </h4>
+            <p>
+                Provenance Data Extractor (PDE) consists of a RESTful API that manages dataflow at physical (i.e., file flow) and logical (i.e., data flow) levels. By receiving HTTP requests, PDE captures provenance and scientific data from scientific application code
+                or workflows modeled on SWMS, generating a JSON object with the gathered data and their data dependencies. We highlight that the JSON object generated by PDE presents a hierarchical structure to be in accordance with the dataflow concepts
+                presented in <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">our CCPE paper</a> published in 2016. Besides provenance and scientific data capture, PDE also loads these data in DfAnalyzer's
+                provenance database.
+            </p>
+            <p>
+                More information about PDE can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/pg" target="_blank">here</a>.
+            </p>
 
-<h4>
-Raw Data Extractor
-</h4>
-    <p>
-    Before to gather domain-specific data using PG program, users have to access and extract raw data from files. Therefore, Raw Data Extractor (RDE) program can be used to provide raw data extraction from files. To run this program, users have to define the following input arguments: 
-    <ul>
-        <li>
-        Name of the raw data extractor;
-        </li>
-        <li>
-        Directory where raw data files can be found;
-        </li>
-        <li>
-        Raw data files that have to be investigated;
-        </li>
-        <li>
-        Attributes (i.e., raw data contents) that have to be accessed and extracted from the raw data files; and
-        </li>
-        <li>
-        Cartridge for raw data extraction.
-        </li>
-      </ul>
-    </p>
-    <p>
-    Since different cartridges can be developed in ARMFUL, users are able to change the extraction algorithm according to their file format or other issues. Considering these input arguments, RDE program access each raw data file each time and extract the values of the selected attributes. All extracted raw data (from several files) are stored in an output file, which follows a Comma-Separated Values (CSV) file format with a header (i.e., selected attributes). 
-    </p>
-    <p>
-    More information about RDE can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rde" target="_blank">here</a>.
-    </p>
+            <h4>
+                Raw Data Extractor
+            </h4>
+            <p>
+                Before to send retrospective provenance data (scientific data from the execution of scientific application) using PDE program, users have to access and extract raw data from files. Therefore, Raw Data Extractor (RDE) is a binary program that provides
+                raw data extraction from files. To run this program, users have to define the following input arguments:
+                <ul>
+                    <li>
+                        Cartridge for raw data extraction;
+                    </li>
+                    <li>
+                        Name of the raw data extractor;
+                    </li>
+                    <li>
+                        Directory where raw data files can be found;
+                    </li>
+                    <li>
+                        Raw data files that have to be investigated; and
+                    </li>
+                    <li>
+                        Attributes (i.e., scientific data contents) that have to be accessed and extracted from the raw data files.
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Since DfAnalyzer is based on the component-based architecture ARMFUL, users are able to develop new cartridges (<i>i.e.,</i> new algorithms) for extracting scientific data from raw data files. Considering these input arguments, RDE program
+                access each raw data file each time and extract the values of the attributes specified by the user. All extracted raw data (from several files) are stored in an output file, which follows a Comma-Separated Values (CSV) file format with
+                a header (<i>i.e.</i>, selected attributes).
+            </p>
+            <p>
+                More information about RDE can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rde" target="_blank">here</a>.
+            </p>
 
-<h4>
-Raw Data Indexer
-</h4>
-    <p>
-    Besides the raw data extraction, there are some approaches that index raw data from files to reduce the volume of data to be loaded into an external repository or a database system, such as <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a>, <a href="http://stratos.seas.harvard.edu/publications/nodb-efficient-query-execution-raw-data-files-0" target="_blank">NoDB</a>, <a href="https://infoscience.epfl.ch/record/200346/files/raw.pdf" target="_blank">RAW</a>, and <a href="https://sdm.lbl.gov/~sbyna/research/papers/2013-PDSW2013-SDS.pdf" target="_blank">SDS/Q</a>. Raw Data Indexer (RDI) has the same input arguments of RDE program, however this program generates indexes to the accessed raw data from files. RDI program presents some cartridges that use existing approaches, such as FastBit tool. This program also has a cartridge based on the positional indexing, which considers the RAW’s implementation.
-    </p>
-    <p>
-    More information about RDI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rdi" target="_blank">here</a>.
-    </p>
+            <h4>
+                Raw Data Indexer
+            </h4>
+            <p>
+                Besides the raw data extraction, there are some approaches that index raw data from files to reduce the volume of data to be loaded into an external repository or a database system, such as
+                <a href="https://sdm.lbl.gov/fastbit/" target="_blank">FastBit</a>,
+                <a href="http://stratos.seas.harvard.edu/publications/nodb-efficient-query-execution-raw-data-files-0" target="_blank">NoDB</a>, <a href="https://infoscience.epfl.ch/record/200346/files/raw.pdf" target="_blank">RAW</a>, and <a href="https://sdm.lbl.gov/~sbyna/research/papers/2013-PDSW2013-SDS.pdf"
+                    target="_blank">SDS/Q</a>. Raw Data Indexer (RDI) has the same input arguments of RDE program, however this program generates indexes to the extracted raw data from files. RDI binary program presents some cartridges that use existing approaches,
+                such as FastBit tool. This program also has a cartridge based on the positional indexing, which considers the RAW’s implementation. In addition, users can also develop new cartridges for applying other indexing techniques in their raw
+                data file formats.
+            </p>
+            <p>
+                More information about RDI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/rdi" target="_blank">here</a>.
+            </p>
+            <h4>
+                Dataflow Viewer or DfViewer
+            </h4>
+            <p>
+                DfAnalyzer delivers a graphical interface with Dataflow Viewer (DfViewer) to provide a dataset perspective view from dataflow specification registered in DfAnalyzer's database. Basically, DfViewer provides a list of dataflows registered in provenance
+                database and users can choose which dataflow they would like to visualize.
+            </p>
+            <p>
+                More details about DfViewer can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/dfviewer" target="_blank">here</a>.
+            </p>
+            <h4>
+                Query Interface
+            </h4>
+            <p>
+                Since provenance and raw data are already stored in a relational database, Query Interface (QI) can be invoked to query those stored data. This QI consists of a RESTful API that receives HTTP requests with input arguments in their messages. These input
+                arguments contemplate the source and target datasets of the dataflow fragment to be analyzed, the attributes to be accessed from the visited datasets, the conditions to be applied in the dataflow fragment to select specific data elements,
+                and the datasets that can be included or excluded from the dataflow fragment. After the submission of query specification, QI generates a SQL-based query to our MonetDB's database automatically, and runs this query. Then, as a result,
+                QI returns a CSV file with the obtained results from the query processing.
+            </p>
+            <p>
+                More details about QI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/qp" target="_blank">here</a>.
+            </p>
 
-<h4>
-Data Ingestor
-</h4>
-    <p>
-    Once provenance and raw data have been gathered by PG program, Data Ingestor (DI) has to be initialized to store provenance data and extracted/indexed raw data from files into a relational database. Thus, this program initialize a database server to perform those store operations into the database. In addition, this relational database follows our PROV-Df data model, which is PROV-compliant. 
-    </p>
-    <p>
-    More details about DI can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/di" target="_blank">here</a>.
-    </p>
-
-<h4>
-Query Processor
-</h4>
-    <p>
-    Since provenance and raw data are already stored in a relational database, Query Processor (QP) can be invoked to query those stored data. This program consumes as input arguments the database connection properties and the elements of the query the user is interested in. Then, in turn, it produces as output a SQL-based query. QP aims at performing a database connection and running the generated query. Therefore, QP has to identify which attributes have to be queried from provenance tables and which attributes are related to domain-specific data (raw data extracted / indexed from files).
-    </p>
-    <p>
-    More details about QP program can be found <a href="https://github.com/hpcdb/armful/tree/gh-pages/src/dfanalyzer/qp" target="_blank">here</a>.
-    </p>
-
-    </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
+        </section>
+        <footer>
+            <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
+            <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+
+</body>
+
 </html>

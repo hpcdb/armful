@@ -11,8 +11,8 @@ It aims at accessing and extracting data from a raw data file.
 
 **Mandatory parameters**
 
-* **cartridge:** name of the implemented cartridge. At this moment, we have two types of cartridges for raw data extraction: (1) invocation of an ad-hoc program (external program), named as `PROGRAM`, and (2) execution of an algorithm implemented in RDI, such as an algorithm for CSV file format, named as `CSV`
-* **operation:** there are three operations (`EXTRACT`, `INDEX`, `ACCESS`). `EXTRACT` and `INDEX` operations are specific for raw data extraction and indexing, respectively. `ACCESS` gather raw data using or not indexes, depending on the cartridge used before.
+* **cartridge:** name of the implemented cartridge. At this moment, we have two types of cartridges for raw data extraction: (1) invocation of an ad-hoc program (external program), named as `PROGRAM`, and (2) execution of an algorithm for extracting scientific data from CSV files, named as `CSV`.
+* **operation:** there are two operations (`EXTRACT`, `ACCESS`). `EXTRACT` operations is specific for raw data extraction. `ACCESS` retrieves raw data accessed in files, depending on the cartridge used before.
 * **extractor_name:** name of the extractor
 * **directory_path:** path of the directory that presents the raw data file
 * **file_name or invocation:** name of the raw data file (for `EXTRACT` operation) or the file with extracted data to be accessed (for `ACCESS` operation)
