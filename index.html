@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>ARMFUL</title>
@@ -13,114 +14,130 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  </head>
-  <body>
+</head>
 
-      <header>
+<body>
+
+    <header>
         <h1>ARMFUL</h1>
         <p></p>
-      </header>
+    </header>
 
-      <div id="banner">
+    <div id="banner">
         <span id="logo"></span>
         <a href="https://github.com/hpcdb/armful" class="button fork"><strong>View On GitHub</strong></a>
         <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/hpcdb/armful/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/hpcdb/armful/tarball/master" class="button">TAR</a></li>
-          </ul>
+            <span>Downloads:</span>
+            <ul>
+                <li><a href="https://github.com/hpcdb/armful/zipball/master" class="button">ZIP</a></li>
+                <li><a href="https://github.com/hpcdb/armful/tarball/master" class="button">TAR</a></li>
+            </ul>
         </div>
-      </div><!-- end banner -->
+    </div>
+    <!-- end banner -->
 
     <div class="wrapper">
-      <nav>
-        <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
-        <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
-        <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
-        <ul><a href="prov-df.html"><strong>PROV-Df</strong></a></ul>
-        <ul><a href="simulations.html"><strong>Numerical Simulations</strong></a></ul>
-        <ul><a href="applications.html"><strong>Applications</strong></a></ul>
-        <ul><a href="team.html"><strong>Our team</strong></a></ul>
-        <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
-        <ul><a href="publications.html"><strong>Publications</strong></a></ul>
-      </nav>
-      <section>
-      <h3>
-<a id="armful" class="anchor" href="#armful" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-ARMFUL architecture
-</h3>
-      <p>
-      ARMFUL is being developed within the context of the <a href="https://hpc4e.eu/" target="_blank">HPC4E project</a>, as part of the Ph.D. thesis of Vítor Silva at COPPE / Federal University of Rio de Janeiro and NACAD, under the supervision of <a href="http://www.cos.ufrj.br/~marta/" target="_blank">Prof. Marta Mattoso</a> (COPPE/UFRJ) in cooperation with <a href="http://www2.ic.uff.br/~danielcmo/" target="_blank">Daniel de Oliveira</a> (UFF) and <a href="http://www-sop.inria.fr/members/Patrick.Valduriez/" target="_blank">Patrick Valduriez</a> (LIRMM / INRIA). ARMFUL analyzes scientific data by retrieving scientific data from files and relating them through dataflow provenance data. We use a relational database to manage provenance and scientific data to benefit from its analytical query support in dataflows. In addition, Database Management Systems (DBMS) present well-known algorithms and strategies to guarantee atomicity, consistency, isolation, and durability in transactions, while they also have consolidated solutions for enabling concurrency control and recovery. To support scientific data analysis, the following services are provided by ARMFUL during the execution of scientific applications:
-      <ul>
-        <li>
-        access to raw data files while they are being generated;
-        </li>
-        <li>
-        parse raw data to find relevant data;
-        </li>
-        <li>
-        extract relevant subsets of raw data;
-        </li>
-        <li>
-        index over data regions of interest;
-        </li>
-        <li>
-        prepare scientific data for queries; and
-        </li>
-        <li>
-        runtime query relating scientific data from different files, provenance data, and performance execution data.
-        </li>
-      </ul>
-      </p>
-<h3>
-<a id="components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-Components
-</h3>
-  <p>
-  ARMFUL architecture presents the following four components, as presented in Figure 1: <i>Provenance Data Gathering</i>, <i>Raw Data Extraction</i>, <i>Index Generation</i>, and <i>Query Processing</i>. In the same way as Scientific Workflow Management Systems (SWMS) with provenance support, white components correspond to the capture of provenance data and their storage in a provenance database. <i>Provenance Data Gathering</i> component aims at capturing provenance data and execution metadata generated during the parallel execution of scientific applications, and storing those gathered data in a provenance relational database. The provenance relational database follows a data model that presents the pointers to the raw data files and metadata that represent scientific data contents, which should be extracted from files to support scientific data analysis. Our PROV-compliant Entity Relationship diagrama, named as <a href="prov-df.html">PROV-Df</a>, is presented in Figure 2 and more information about it can be found <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">here</a>.
-  <img src="img/components.png" alt="ARMFUL's components">
-  </p>
-  <p align="center">
-  <b>Figure 1. Components of ARMFUL. This figure was extended from our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html" target="_blank">Supercomputing poster</a></b>
-  </p>
-  <img src="img/prov-df.png" alt="PROV-Df">
-  </p>
-  <p align="center">
-  <b>Figure 2. PROV-Df diagram</b>
-  </p>
-  <p>
-  Gray components describe the steps to extract scientific data from files, to generate indexes over the scientific data, and to query provenance and scientific data from a database. To support scientific data analysis, <i>Provenance Data Gathering</i> component manages the relationships among files, since <i>Raw Data Extraction</i> and <i>Index Generation</i> components need the file references to access and extract scientific data from files. Moreover, they enable queries that associate scientific data elements from multiple files. Following, we discuss each one of these gray components in detail.</p>
-  <p>
-  <i>Raw Data Extraction</i> component aims at reading the contents of raw data files, parsing them and retrieving selected contents that are relevant according to the attributes chosen by the user. To achieve this goal, this component follows four steps: content read, tokenization, contents filtering, and parsing. More details about these steps can be found in our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html" target="_blank">Supercomputing poster</a>.
-  </p>
-  <p>
-  <i>Index Generation</i> component is responsible for applying indexing techniques in specific contents from files to improve direct access to specific regions of the scientific data space and managing metadata associated to the dataflow. Besides the content read from raw data files and parsing, this component has to generate indexes to the accessed scientific data contents according to the defined indexing technique (<i>e.g.</i>, positional indexing or bitmap indexing).
-  </p>
-  <p> 
-  <i>Query Processing</i> provides a mechanism to query provenance and scientific data stored in our provenance database, by receiving user input parameters and running the specified query, and returning query results in a CSV file. This component varies its behavior according to the chosen strategy for extracting or indexing scientific data from files. More details about the behavior of this component can be found in our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html" target="_blank">Supercomputing poster</a>.
-  </p>
-<h3>
-<a id="instantiation" class="anchor" href="#instantiation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-Instantiation of ARMFUL architecture
-</h3>
-  <p>
-  <b>A-Chiron SWMS</b>
-  </p>
-  <p>A-Chiron is an implementation of ARMFUL with Chiron SWMS. Since the main contributions of ARMFUL are supporting raw data extraction and index generation based on the invocation of external programs (ad-hoc programs or third-party tools), we developed different cartridges to support these features in A-Chiron. More details about this implementation can be found <a href="a-chiron.html">here</a>.
-  </p>
-  <p>
-  <b>DfAnalyzer tool</b>
-  </p>
-  <p>Considering the components from ARMFUL architecture, we instantiate them as DfAnalyzer to be coupled to existing SWMS, data processing engines (<i>e.g.</i>, Spark) and scientific applications using third-party tools (<i>e.g.</i>, MPI, OpenMP, and libMesh library). DfAnalyzer tool keeps all the parallel execution control at the code of the SWMS or the scientific application. We present more details about DfAnalyzer <a href="dfanalyzer.html" >here</a>.
-  </p>
+        <nav>
+            <ul><a href="index.html"><strong>ARMFUL</strong></a></ul>
+            <ul><a href="a-chiron.html"><strong>A-Chiron</strong></a></ul>
+            <ul><a href="dfanalyzer.html"><strong>DfAnalyzer</strong></a></ul>
+            <ul><a href="dfanalyzer-demo.html"><strong>VLDB demo using DfAnalyzer</strong></a></ul>
+            <ul><a href="prov-df.html"><strong>PROV-Df</strong></a></ul>
+            <ul><a href="simulations.html"><strong>Numerical Simulations</strong></a></ul>
+            <ul><a href="applications.html"><strong>Applications</strong></a></ul>
+            <ul><a href="team.html"><strong>Our team</strong></a></ul>
+            <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
+            <ul><a href="publications.html"><strong>Publications</strong></a></ul>
+        </nav>
+        <section>
+            <h3>
+                <a id="armful" class="anchor" href="#armful" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> ARMFUL architecture
+            </h3>
+            <p>
+                ARMFUL is being developed within the context of the <a href="https://hpc4e.eu/" target="_blank">HPC4E project</a>, as part of the Ph.D. thesis of Vítor Silva at COPPE / Federal University of Rio de Janeiro and NACAD, under the supervision
+                of <a href="http://www.cos.ufrj.br/~marta/" target="_blank">Prof. Marta Mattoso</a> (COPPE/UFRJ) in cooperation with <a href="http://www2.ic.uff.br/~danielcmo/" target="_blank">Daniel de Oliveira</a> (UFF) and <a href="http://www-sop.inria.fr/members/Patrick.Valduriez/"
+                    target="_blank">Patrick Valduriez</a> (LIRMM / INRIA). ARMFUL analyzes scientific data by retrieving scientific data from files and relating them through dataflow provenance data. We use a relational database to manage provenance and scientific
+                data to benefit from its analytical query support in dataflows. In addition, Database Management Systems (DBMS) present well-known algorithms and strategies to guarantee atomicity, consistency, isolation, and durability in transactions,
+                while they also have consolidated solutions for enabling concurrency control and recovery. To support scientific data analysis, the following services are provided by ARMFUL during the execution of scientific applications:
+                <ul>
+                    <li>
+                        access to raw data files while they are being generated;
+                    </li>
+                    <li>
+                        parse raw data to find relevant data;
+                    </li>
+                    <li>
+                        extract relevant subsets of raw data;
+                    </li>
+                    <li>
+                        index over data regions of interest;
+                    </li>
+                    <li>
+                        prepare scientific data for queries; and
+                    </li>
+                    <li>
+                        runtime query relating scientific data from different files, provenance data, and performance execution data.
+                    </li>
+                </ul>
+            </p>
+            <h3>
+                <a id="components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Components
+            </h3>
+            <p>
+                ARMFUL architecture presents the following four components, as presented in Figure 1: <i>Provenance Data Gathering</i>, <i>Raw Data Extraction</i>, <i>Index Generation</i>, and <i>Query Processing</i>. In the same way as Scientific Workflow
+                Management Systems (SWMS) with provenance support, white components correspond to the capture of provenance data and their storage in a provenance database. <i>Provenance Data Gathering</i> component aims at capturing provenance data and
+                execution metadata generated during the parallel execution of scientific applications, and storing those gathered data in a provenance relational database. The provenance relational database follows a data model that presents the pointers
+                to the raw data files and metadata that represent scientific data contents, which should be extracted from files to support scientific data analysis. Our PROV-compliant Entity Relationship diagrama, named as <a href="prov-df.html">PROV-Df</a>,
+                is presented in Figure 2 and more information about it can be found <a href="http://onlinelibrary.wiley.com/doi/10.1002/cpe.3616/abstract" target="_blank">here</a>.
+                <img src="img/components.png" alt="ARMFUL's components">
+            </p>
+            <p align="center">
+                <b>Figure 1. Components of ARMFUL. This figure was extended from our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html" target="_blank">Supercomputing poster</a></b>
+            </p>
+            <img src="img/prov-df.png" alt="PROV-Df">
+            </p>
+            <p align="center">
+                <b>Figure 2. PROV-Df diagram</b>
+            </p>
+            <p>
+                Gray components describe the steps to extract scientific data from files, to generate indexes over the scientific data, and to query provenance and scientific data from a database. To support scientific data analysis, <i>Provenance Data Gathering</i>                component manages the relationships among files, since <i>Raw Data Extraction</i> and <i>Index Generation</i> components need the file references to access and extract scientific data from files. Moreover, they enable queries that associate
+                scientific data elements from multiple files. Following, we discuss each one of these gray components in detail.</p>
+            <p>
+                <i>Raw Data Extraction</i> component aims at reading the contents of raw data files, parsing them and retrieving selected contents that are relevant according to the attributes chosen by the user. To achieve this goal, this component follows
+                four steps: content read, tokenization, contents filtering, and parsing. More details about these steps can be found in our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html" target="_blank">Supercomputing poster</a>.
+            </p>
+            <p>
+                <i>Index Generation</i> component is responsible for applying indexing techniques in specific contents from files to improve direct access to specific regions of the scientific data space and managing metadata associated to the dataflow.
+                Besides the content read from raw data files and parsing, this component has to generate indexes to the accessed scientific data contents according to the defined indexing technique (<i>e.g.</i>, positional indexing or bitmap indexing).
+            </p>
+            <p>
+                <i>Query Processing</i> provides a mechanism to query provenance and scientific data stored in our provenance database, by receiving user input parameters and running the specified query, and returning query results in a CSV file. This
+                component varies its behavior according to the chosen strategy for extracting or indexing scientific data from files. More details about the behavior of this component can be found in our <a href="http://sc16.supercomputing.org/sc-archive/tech_poster/tech_poster_pages/post152.html"
+                    target="_blank">Supercomputing poster</a>.
+            </p>
+            <h3>
+                <a id="instantiation" class="anchor" href="#instantiation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Instantiation of ARMFUL architecture
+            </h3>
+            <p>
+                <b>A-Chiron SWMS</b>
+            </p>
+            <p>A-Chiron is an implementation of ARMFUL with Chiron SWMS. Since the main contributions of ARMFUL are supporting raw data extraction and index generation based on the invocation of external programs (ad-hoc programs or third-party tools), we
+                developed different cartridges to support these features in A-Chiron. More details about this implementation can be found <a href="a-chiron.html">here</a>.
+            </p>
+            <p>
+                <b>DfAnalyzer tool</b>
+            </p>
+            <p>Considering the components from ARMFUL architecture, we instantiate them as DfAnalyzer to be coupled to existing SWMS, data processing engines (<i>e.g.</i>, Spark) and scientific applications using third-party tools (<i>e.g.</i>, MPI, OpenMP,
+                and libMesh library). DfAnalyzer tool keeps all the parallel execution control at the code of the SWMS or the scientific application. We present more details about DfAnalyzer <a href="dfanalyzer.html">here</a>.
+            </p>
 
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
+        </section>
+        <footer>
+            <p>Project maintained by <a href="https://github.com/vssousa">vssousa</a></p>
+            <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+        </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-  </body>
+</body>
+
 </html>

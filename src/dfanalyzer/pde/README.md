@@ -86,7 +86,7 @@ Starting DfA RESTful API
 
 ## RESTful API documentation
 
-Since our RESTful application have been initialized, users can submit HTTP requests with POST method to PDE for extracting provenance and scientific data. Then, considering the dataflow abstraction followed by DfAnalyzer, users have to introduce a message according to this abstraction. Therefore, PDE provides a set of methods to be present in the HTTP messsage, as follows:
+Since our RESTful application has been initialized, users can submit HTTP requests with POST method to PDE for extracting provenance and scientific data. Then, considering the dataflow abstraction followed by DfAnalyzer, users have to introduce a message according to this abstraction. Therefore, PDE provides a set of methods to be present in the HTTP message, as follows:
 
 ![PDE restful services](../../../img/dfa-docs-pde.png)
 This web page (http://localhost:22000/dfview/help) can be accessed using a browser after the initialization of PDE.
@@ -132,7 +132,7 @@ transformation(europe,{odeduplication},{oeurope},
 
 After the dataflow specification, provenance and scientific data generated during the execution of scientific applications can be registered in our provenance database. In this case, PDE has to capture HTTP request in the task level (*i.e.*, execution of a data transformation).
 
-For example, the following message should be sent in a HTTP request to the URL
+For example, the following message should be sent in an HTTP request to the URL
 
 `http://localhost:22000/pde/task`
 

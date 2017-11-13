@@ -75,7 +75,7 @@ FILENAME;CUSTOMERID;COUNTRY;CONTINENT
 * Positional indexing algorithm
 
 ### PostgresRaw
-* Positional indexing algorithm based on the NoDB phylosophy
+* Positional indexing algorithm based on the NoDB philosophy
 
 ### FastBit and Optimized FastBit (known as OPTIMIZED_FASTBIT)
 * Bitmap indexing algorithms that use FastBit tool
