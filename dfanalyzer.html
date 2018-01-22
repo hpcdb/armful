@@ -47,8 +47,8 @@
             <ul><a href="simulations.html"><strong>Numerical Simulations</strong></a></ul>
             <ul><a href="applications.html"><strong>Applications</strong></a></ul>
             <ul><a href="team.html"><strong>Our team</strong></a></ul>
-            <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
             <ul><a href="publications.html"><strong>Publications</strong></a></ul>
+            <ul><a href="acknowledgement.html"><strong>Acknowledgements</strong></a></ul>
         </nav>
         <section>
             <h3>
@@ -58,8 +58,10 @@
             <p>
                 DfAnalyzer tool is an instantiation of ARMFUL architecture to provide dataflow analysis to scientific applications. By coupling DfAnalyzer components to the source codes of scientific applications, scientific data is extracted and related along a dataflow
                 ready for queries at runtime. DfAnalyzer has features that help monitoring, debugging, provenance registration and steering, all at runtime. Its light components do not harm the parallel performance of the scientific applications. As opposed
-                to SWMS, DfAnalyzer keeps all the parallel execution control at the scientific application code. Therefore, applications may use highly efficient libraries or invoke black-box parallel code. DfAnalyzer can also be used by computational
-                and computer specialists, so that they can incorporate user steering support. Considering the ARMFUL’s components, the following table shows how each one of them is mapped to the DfAnalyzer components:
+                to SWMS, DfAnalyzer keeps all the parallel execution control at the scientific application code. Therefore, applications may use highly efficient libraries or invoke black-box parallel code. DfAnalyzer can also be used by computational and computer specialists, so that they can incorporate user steering support. When coupled to <a href="https://github.com/hpcdb/DfAdapter">DfAdapter</a> provenance of human interaction data is collected when users adapt a dataflow online (while it is in execution), relates with other data of interest and makes the provenance database available for online analytical queries. Example of possible adaptations are: parameter tuning, dataset reduction, loop changes, etc.
+            </p>
+            <p>
+                Considering the ARMFUL’s components, the following table shows how each one of them is mapped to the DfAnalyzer components:
             </p>
             <table style="width:100%">
                 <tr>
