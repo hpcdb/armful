@@ -693,7 +693,7 @@ header p {
   height: 50px;
   margin-right: -382px;
   position: fixed;
-  top: 115px;
+  top: 65px;
   background: #ffcc00;
   border: 1px solid #f0b500;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -795,7 +795,7 @@ section {
   width: 590px;
   padding: 30px 30px 50px 30px;
   margin: 20px 0;
-  margin-top: 190px;
+  margin-top: 132px;
   position: relative;
   background: #fbfbfb;
   -moz-border-radius: 3px;
@@ -818,7 +818,7 @@ small {
 nav {
   width: 230px;
   position: fixed;
-  top: 220px;
+  top: 152px;
   left: 50%;
   margin-left: -580px;
   text-align: right;
@@ -914,7 +914,7 @@ footer {
   }
 
   header {
-    padding: 20px 20px;
+    padding: 13px 20px;
     margin: 0;
   }
   header h1 {
@@ -930,7 +930,7 @@ footer {
   }
 
   #banner {
-    top: 80px;
+    top: 71px;
   }
   #banner .fork {
     float: left;
